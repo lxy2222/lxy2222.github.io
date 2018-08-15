@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | iceyu</title>
+  <title>es6中map的作用与学习 | iceyu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="iceyu">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="今天在听大神说完hexo中es6 map的用法，觉得有必要好好的记录下来，首先我们先了解一下为什么使用map   plain Object其实就是设计模式中的策略者模式了，然而plain Object的话只能使用字符串作为hash值，实际上在生产应用情境下我们不止希望使用字符串当做键值，而是希望使用值对值的情况">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6中map的作用与学习">
+<meta property="og:url" content="http://yoursite.com/2018/08/15/es6中map的作用与学习/index.html">
 <meta property="og:site_name" content="iceyu">
+<meta property="og:description" content="今天在听大神说完hexo中es6 map的用法，觉得有必要好好的记录下来，首先我们先了解一下为什么使用map   plain Object其实就是设计模式中的策略者模式了，然而plain Object的话只能使用字符串作为hash值，实际上在生产应用情境下我们不止希望使用字符串当做键值，而是希望使用值对值的情况来考虑，并且不重复，这样就引入了map结构  talk is cheap，来，举">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-15T15:21:34.498Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iceyu">
+<meta name="twitter:title" content="es6中map的作用与学习">
+<meta name="twitter:description" content="今天在听大神说完hexo中es6 map的用法，觉得有必要好好的记录下来，首先我们先了解一下为什么使用map   plain Object其实就是设计模式中的策略者模式了，然而plain Object的话只能使用字符串作为hash值，实际上在生产应用情境下我们不止希望使用字符串当做键值，而是希望使用值对值的情况来考虑，并且不重复，这样就引入了map结构  talk is cheap，来，举">
   
     <link rel="alternative" href="/atom.xml" title="iceyu" type="application/atom+xml">
   
@@ -150,86 +154,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-es6中map的作用与学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      es6中map的作用与学习
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/15/es6中map的作用与学习/" class="archive-article-date">
+
+        
+        <a href="/2018/08/15/es6中map的作用与学习/" class="archive-article-date">
   	<time datetime="2018-08-15T14:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/15/es6中map的作用与学习/">es6中map的作用与学习</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在听大神说完hexo中es6 map的用法，觉得有必要好好的记录下来，首先我们先了解一下为什么使用map </p>
+<blockquote>
+<p>plain Object其实就是设计模式中的策略者模式了，然而plain Object的话只能使用字符串作为hash值，实际上在生产应用情境下我们不止希望使用字符串当做键值，而是希望使用值对值的情况来考虑，并且不重复，这样就引入了map结构</p>
+</blockquote>
+<p>talk is cheap，来，举个例子<br><code>const m = new Map()</code><br><code>const o = {a: &#39;b&#39;}</code><br><code>m.set(o, &#39;content&#39;) // 给map赋值使用set</code><br><code>m.get(o) // 返回值为content</code><br>同时,map也可以接受数组作为参数，但是这个数组里的每一项都要以键值对的形式加入<br><code>const m = new Map([[&#39;type&#39;, &#39;app&#39;],[&#39;name&#39;: &#39;xy&#39;]]</code><br>在map中提供了这样几个接口，分别为set用来赋值，get用来获取值，has判断是否有对应键值，delete用来删除键，clear用来清空<br>注意只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。<br><code>const map = new Map()</code><br><code>map.set([&#39;a&#39;], 555)</code><br><code>map.get([&#39;a&#39;]) // undefined</code><br>那么如何遍历一个map呢<br><code>for (let key of map.keys()) //遍历得到key值</code><br><code>for (let [key, value] of map.entries()) //遍历得到键值对</code><br>或者使用扩展运算符也ok<br><code>[...map.entries()]</code><br><code>[...map]</code><br>上面二者得到一样的结果</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/15/es6中map的作用与学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/22/The-First/" class="archive-article-date">
-  	<time datetime="2017-11-22T03:53:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-22</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/22/The-First/">The First</a>
-    </h1>
+  
+    <a href="/2017/11/22/The-First/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">The First</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -252,8 +330,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
