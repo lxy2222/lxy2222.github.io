@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="渣渣前端总结">
 <meta property="og:description" content="今天在听大神说完hexo中es6 map的用法，觉得有必要好好的记录下来，首先我们先了解一下为什么使用map   plain Object其实就是设计模式中的策略者模式了，然而plain Object的话只能使用字符串作为hash值，实际上在生产应用情境下我们不止希望使用字符串当做键值，而是希望使用值对值的情况来考虑，并且不重复，这样就引入了map结构  talk is cheap，来，举">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-15T15:21:34.498Z">
+<meta property="og:updated_time" content="2018-08-16T15:15:01.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6中map的作用与学习">
 <meta name="twitter:description" content="今天在听大神说完hexo中es6 map的用法，觉得有必要好好的记录下来，首先我们先了解一下为什么使用map   plain Object其实就是设计模式中的策略者模式了，然而plain Object的话只能使用字符串作为hash值，实际上在生产应用情境下我们不止希望使用字符串当做键值，而是希望使用值对值的情况来考虑，并且不重复，这样就引入了map结构  talk is cheap，来，举">
@@ -43,111 +43,137 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
-		</a>
-		<hgroup>
-		  <h1 class="header-author"><a href="/">lxy2222</a></h1>
-		</hgroup>
-		
+    <div class="overlay" style="background: #4d4d4d"></div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://niuerdata.g.com.cn/data/shareimg_oss/big_media_img/2018/07/16/259c655b579b63815675875a96e82847.JPEG" class="js-avatar">
+            </a>
+            <hgroup>
+                <h1 class="header-author">
+                    <a href="/">
+                        lxy2222
+                    </a>
+                </h1>
+            </hgroup>
+            
 
-		<nav class="header-menu">
-			<ul>
-			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
-			</ul>
-		</nav>
-		<nav class="header-smart-menu">
-    		
-    			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-            
-		</nav>
-		<nav class="header-nav">
-			<div class="social">
-				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
-			</div>
-		</nav>
-	</header>		
-</div>
-
+                    <nav class="header-menu">
+                        <ul>
+                            
+                                <li>
+                                    <a href="/">
+                                        主页
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/tags/随笔/">
+                                        随笔
+                                    </a>
+                                </li>
+                                
+                        </ul>
+                    </nav>
+                    <nav class="header-smart-menu">
+                        
+                            
+                                <a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">
+                                    所有文章
+                                </a>
+                                
+                                    
+                            
+                                <a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">
+                                    友链
+                                </a>
+                                
+                                    
+                            
+                                <a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">
+                                    关于我
+                                </a>
+                                
+                                    
+                    </nav>
+                    <nav class="header-nav">
+                        <div class="social">
+                            
+                                <a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+                                
+                                <a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+                                
+                                <a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+                                
+                                <a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+                                
+                        </div>
+                    </nav>
+        </header>
+    </div>
     </div>
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
-<nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
-	<div class="btnctn js-mobile-btnctn">
-  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
-	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author js-header-author">lxy2222</h1>
-			</hgroup>
-			
-			
-			
-				
-			
-				
-			
-			
-			
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
-				</div>
-			</nav>
+    <nav id="mobile-nav">
+        <div class="overlay js-overlay" style="background: #4d4d4d"></div>
+        <div class="btnctn js-mobile-btnctn">
+            <div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+        </div>
+        <div class="intrude-less">
+            <header id="header" class="inner">
+                <div class="profilepic">
+                    <img src="https://niuerdata.g.com.cn/data/shareimg_oss/big_media_img/2018/07/16/259c655b579b63815675875a96e82847.JPEG" class="js-avatar">
+                </div>
+                <hgroup>
+                    <h1 class="header-author js-header-author">
+                        lxy2222
+                    </h1>
+                </hgroup>
+                
+                        
+                            
+                                
+                                    
+                                
+                                    
+                                        
 
-			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
-				
-				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
-		        
-				</ul>
-			</nav>
-		</header>				
-	</div>
-	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
-</nav>
+                                            <nav class="header-nav">
+                                                <div class="social">
+                                                    
+                                                        <a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+                                                        
+                                                        <a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+                                                        
+                                                        <a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+                                                        
+                                                        <a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+                                                        
+                                                </div>
+                                            </nav>
 
+                                            <nav class="header-menu js-header-menu">
+                                                <ul style="width: 50%">
+                                                    
+                                                        
+                                                            <li style="width: 50%">
+                                                                <a href="/">
+                                                                    主页
+                                                                </a>
+                                                            </li>
+                                                            
+                                                            <li style="width: 50%">
+                                                                <a href="/tags/随笔/">
+                                                                    随笔
+                                                                </a>
+                                                            </li>
+                                                            
+                                                </ul>
+                                            </nav>
+            </header>
+        </div>
+        <div class="mobile-mask" style="display:none" q-show="isShow"></div>
+    </nav>
       <div id="wrapper" class="body-wrap">
         <div class="menu-l">
           <div class="canvas-wrap">
@@ -178,7 +204,12 @@
 <blockquote>
 <p>plain Object其实就是设计模式中的策略者模式了，然而plain Object的话只能使用字符串作为hash值，实际上在生产应用情境下我们不止希望使用字符串当做键值，而是希望使用值对值的情况来考虑，并且不重复，这样就引入了map结构</p>
 </blockquote>
-<p>talk is cheap，来，举个例子<br><code>const m = new Map()</code><br><code>const o = {a: &#39;b&#39;}</code><br><code>m.set(o, &#39;content&#39;) // 给map赋值使用set</code><br><code>m.get(o) // 返回值为content</code><br>同时,map也可以接受数组作为参数，但是这个数组里的每一项都要以键值对的形式加入<br><code>const m = new Map([[&#39;type&#39;, &#39;app&#39;],[&#39;name&#39;: &#39;xy&#39;]]</code><br>在map中提供了这样几个接口，分别为set用来赋值，get用来获取值，has判断是否有对应键值，delete用来删除键，clear用来清空<br>注意只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。<br><code>const map = new Map()</code><br><code>map.set([&#39;a&#39;], 555)</code><br><code>map.get([&#39;a&#39;]) // undefined</code><br>那么如何遍历一个map呢<br><code>for (let key of map.keys()) //遍历得到key值</code><br><code>for (let [key, value] of map.entries()) //遍历得到键值对</code><br>或者使用扩展运算符也ok<br><code>[...map.entries()]</code><br><code>[...map]</code><br>上面二者得到一样的结果</p>
+<p>talk is cheap，来，举个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line"><span class="keyword">const</span> o = &#123;<span class="attr">a</span>: <span class="string">'b'</span>&#125;</span><br><span class="line">m.set(o, <span class="string">'content'</span>) <span class="comment">// 给map赋值使用set</span></span><br><span class="line">m.get(o) <span class="comment">// 返回值为content`</span></span><br></pre></td></tr></table></figure></p>
+<p>同时,map也可以接受数组作为参数，但是这个数组里的每一项都要以键值对的形式加入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'type'</span>, <span class="string">'app'</span>],[<span class="string">'name'</span>: <span class="string">'xy'</span>]]</span><br></pre></td></tr></table></figure></p>
+<p>在map中提供了这样几个接口，分别为set用来赋值，get用来获取值，has判断是否有对应键值，delete用来删除键，clear用来清空<br>注意只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">map.set([<span class="string">'a'</span>], <span class="number">555</span>)</span><br><span class="line">map.get([<span class="string">'a'</span>]) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></p>
+<p>那么如何遍历一个map呢<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> map.keys()) <span class="comment">//遍历得到key值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map.entries()) <span class="comment">//遍历得到键值对</span></span><br></pre></td></tr></table></figure></p>
+<p>或者使用扩展运算符也ok<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[...map.entries()]</span><br><span class="line">[...map]</span><br></pre></td></tr></table></figure></p>
+<p>上面二者得到一样的结果</p>
 
       
 
