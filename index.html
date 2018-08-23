@@ -178,6 +178,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-npm install失败指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/23/npm install失败指南/">npm install失败指南</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/23/npm install失败指南/" class="archive-article-date">
+  	<time datetime="2018-08-23T14:24:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>相信大家都遇到过npm install失败的情况吧，而且失败的原因大概也是多种多样<br>在我这里是好的，大概是说的最多的话题，在我的好朋友大博神的帮助下，经过一番瞎这折腾，然后终于顺顺利利不敢说百分之百但是大部分情况下都可以解决，那么我们开始吧<br>1、 <code>rm -rf node_modules</code><br>这个是最简单的过程，当安装失败了之后，首先要把node_module删除<br>2、<code>npm i &amp;&amp; npm dedupe &amp;&amp; npm prune</code><br>那么这几个命令要详细解释一下，首先npm i就是执行npm install 但是光只是重新安装并不够，可以经常在mac OS上看到栈溢出 这是由于npm包之间的相互依赖，而<code>npm dedupe</code>就起到的是重新计算包之间的依赖关系，用来保证结构是最优的<br>所以在重新安装的时候最好执行一次<code>npm dedupe</code><br><code>npm prune</code>的作用则是移除多余的包，引用一段官网的说明</p>
+<blockquote>
+<p>This command removes “extraneous” packages. If a package name is provided, then only packages matching one of the supplied names are removed.</p>
+</blockquote>
+<p>3、安装的时候尽量关闭科学上网工具，如果你已经把npm的源设置为国内镜像的话，很容易报错</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小技巧</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/23/npm install失败指南/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-es6中map的作用与学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -404,6 +482,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小技巧</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
