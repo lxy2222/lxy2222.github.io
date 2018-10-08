@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>渣渣前端总结</title>
+  <title>vue中emit在异步下的使用 | 渣渣前端总结</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="渣渣前端总结">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="由于在vue2.0.x中，父组件传递给子组件的props 不允许在子组件中修改，那么在实际的使用过程中，子组件用来修改父组件传递的props值，一般我们用到的为两种一种是使用vuex,使用vuex的好处不用多说，vuex打破了组件之间的关系，使得数据可以在整个框架中全局使用，但是某些小的改动如果也使用vuex 那么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue中emit在异步下的使用">
+<meta property="og:url" content="http://yoursite.com/2018/10/08/vue中emit在异步下的使用/index.html">
 <meta property="og:site_name" content="渣渣前端总结">
+<meta property="og:description" content="由于在vue2.0.x中，父组件传递给子组件的props 不允许在子组件中修改，那么在实际的使用过程中，子组件用来修改父组件传递的props值，一般我们用到的为两种一种是使用vuex,使用vuex的好处不用多说，vuex打破了组件之间的关系，使得数据可以在整个框架中全局使用，但是某些小的改动如果也使用vuex 那么就会把vuex当做全局变量使用另一种就是使用$emit 在父组件中 使用v-on">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-08T14:32:46.276Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="渣渣前端总结">
+<meta name="twitter:title" content="vue中emit在异步下的使用">
+<meta name="twitter:description" content="由于在vue2.0.x中，父组件传递给子组件的props 不允许在子组件中修改，那么在实际的使用过程中，子组件用来修改父组件传递的props值，一般我们用到的为两种一种是使用vuex,使用vuex的好处不用多说，vuex打破了组件之间的关系，使得数据可以在整个框架中全局使用，但是某些小的改动如果也使用vuex 那么就会把vuex当做全局变量使用另一种就是使用$emit 在父组件中 使用v-on">
   
     <link rel="alternative" href="/atom.xml" title="渣渣前端总结" type="application/atom+xml">
   
@@ -176,16 +180,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-vue中emit在异步下的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-vue中emit在异步下的使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/08/vue中emit在异步下的使用/">vue中emit在异步下的使用</a>
+    <h1 class="article-title" itemprop="name">
+      vue中emit在异步下的使用
     </h1>
   
 
@@ -206,6 +208,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -213,16 +236,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/08/vue中emit在异步下的使用/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/08/vue中emit在异步下的使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/23/npm install失败指南/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">npm install失败指南</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -242,221 +324,14 @@
 
 
 
-
   
-    <article id="post-npm install失败指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/23/npm install失败指南/">npm install失败指南</a>
-    </h1>
   
 
-        
-        <a href="/2018/08/23/npm install失败指南/" class="archive-article-date">
-  	<time datetime="2018-08-23T14:24:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>相信大家都遇到过npm install失败的情况吧，而且失败的原因大概也是多种多样<br>在我这里是好的，大概是说的最多的话题，在我的好朋友大博神的帮助下，经过一番瞎这折腾，然后终于顺顺利利不敢说百分之百但是大部分情况下都可以解决，那么我们开始吧<br>1、 <code>rm -rf node_modules</code><br>这个是最简单的过程，当安装失败了之后，首先要把node_module删除<br>2、<code>npm i &amp;&amp; npm dedupe &amp;&amp; npm prune</code><br>那么这几个命令要详细解释一下，首先npm i就是执行npm install 但是光只是重新安装并不够，可以经常在mac OS上看到栈溢出 这是由于npm包之间的相互依赖，而<code>npm dedupe</code>就起到的是重新计算包之间的依赖关系，用来保证结构是最优的<br>所以在重新安装的时候最好执行一次<code>npm dedupe</code><br><code>npm prune</code>的作用则是移除多余的包，引用一段官网的说明</p>
-<blockquote>
-<p>This command removes “extraneous” packages. If a package name is provided, then only packages matching one of the supplied names are removed.</p>
-</blockquote>
-<p>3、安装的时候尽量关闭科学上网工具，如果你已经把npm的源设置为国内镜像的话，很容易报错</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小技巧</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/23/npm install失败指南/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-es6中map的作用与学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/15/es6中map的作用与学习/">es6中map的作用与学习</a>
-    </h1>
   
 
-        
-        <a href="/2018/08/15/es6中map的作用与学习/" class="archive-article-date">
-  	<time datetime="2018-08-15T14:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天在听大神说完hexo中es6 map的用法，觉得有必要好好的记录下来，首先我们先了解一下为什么使用map </p>
-<blockquote>
-<p>plain Object其实就是设计模式中的策略者模式了，然而plain Object的话只能使用字符串作为hash值，实际上在生产应用情境下我们不止希望使用字符串当做键值，而是希望使用值对值的情况来考虑，并且不重复，这样就引入了map结构</p>
-</blockquote>
-<p>talk is cheap，来，举个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line"><span class="keyword">const</span> o = &#123;<span class="attr">a</span>: <span class="string">'b'</span>&#125;</span><br><span class="line">m.set(o, <span class="string">'content'</span>) <span class="comment">// 给map赋值使用set</span></span><br><span class="line">m.get(o) <span class="comment">// 返回值为content`</span></span><br></pre></td></tr></table></figure></p>
-<p>同时,map也可以接受数组作为参数，但是这个数组里的每一项都要以键值对的形式加入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'type'</span>, <span class="string">'app'</span>],[<span class="string">'name'</span>: <span class="string">'xy'</span>]]</span><br></pre></td></tr></table></figure></p>
-<p>在map中提供了这样几个接口，分别为set用来赋值，get用来获取值，has判断是否有对应键值，delete用来删除键，clear用来清空<br>注意只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">map.set([<span class="string">'a'</span>], <span class="number">555</span>)</span><br><span class="line">map.get([<span class="string">'a'</span>]) <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></p>
-<p>那么如何遍历一个map呢<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> map.keys()) <span class="comment">//遍历得到key值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map.entries()) <span class="comment">//遍历得到键值对</span></span><br></pre></td></tr></table></figure></p>
-<p>或者使用扩展运算符也ok<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[...map.entries()]</span><br><span class="line">[...map]</span><br></pre></td></tr></table></figure></p>
-<p>上面二者得到一样的结果</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/15/es6中map的作用与学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-The-First" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/22/The-First/">The First</a>
-    </h1>
   
 
-        
-        <a href="/2017/11/22/The-First/" class="archive-article-date">
-  	<time datetime="2017-11-22T03:53:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一直以来不愿意搭博客一个原因是因为我懒<br>第二个原因就是因为我觉得没啥好写的<br>但既然学校之前的博客空间被迫关闭了<br>所以呢 还是觉得有个私人的博客空间用来记录学习的东西比较好<br>所以还是留着吧<br>欢迎关注，不定期更新干货</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/22/The-First/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -479,8 +354,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
