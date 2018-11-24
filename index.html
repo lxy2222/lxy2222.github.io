@@ -160,6 +160,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端监控断网变化的tips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/24/前端监控断网变化的tips/">前端监控断网变化的tips</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/24/前端监控断网变化的tips/" class="archive-article-date">
+  	<time datetime="2018-11-24T11:43:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天组里有同事遇到需要监测断网重连的问题，这类问题我们之前使用的是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连接网络</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'online'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 断网状态</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'offline'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>但是这种方法只能够在浏览器从断网切换到联网，或者从联网切换到断网的状态触发，或者换一句话说，如果你的浏览器始终保持在联网状态下，那么不会触发online事件，但是实际的需求里，需要联网和断网状态展示不同的样式，那么怎么办呢<br>后来在组长的帮助下，使用<code>navigator.onLine</code><br>就能实现相应的功能<br>不需要被动触发，参考文档如下所示<br>参考链接: <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NavigatorOnLine/Online_and_offline_events" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/NavigatorOnLine/Online_and_offline_events</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小技巧</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/24/前端监控断网变化的tips/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-工作半年总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -541,7 +616,7 @@
         isArchive: false,
         isTag: false,
         isCategory: false,
-        open_in_new: false,
+        open_in_new: true,
         toc_hide_index: true,
         root: "/",
         innerArchive: true,
@@ -684,6 +759,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <a href="https://blog.keep.moe" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>超级可爱的makito</a>
             </li>
           
+            <li class="search-li">
+              <a href="http://bambooom.github.io" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>可爱的竹子小姐姐</a>
+            </li>
+          
         </ul>
   		
     	</section>
@@ -692,7 +771,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">一只菜鸟&lt;br&gt;&lt;br&gt;前端er&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">一只菜鸟&lt;/br&gt;前端er&lt;/br&gt;谢谢大家</div>
   	  	
     	</section>
     
