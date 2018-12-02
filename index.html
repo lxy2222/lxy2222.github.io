@@ -160,6 +160,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-leetcode-productExceptSelf题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/02/leetcode-productExceptSelf题解/">leetcode productExceptSelf题解</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/02/leetcode-productExceptSelf题解/" class="archive-article-date">
+  	<time datetime="2018-12-02T13:29:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天本来想刷一题leetcode用来给愉快的周末总结一下，所以我就随机愉快的挑了一题，<br>但是没有想到 这道题对我这只弱鸡很久都没解出来 还是看了别人的算法之后，思考了很久，话不多说<br>先放题目<br><code>Given an array nums of n integers where n &gt; 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].</code><br>其实这道题目很简单 如果使用遍历的方法，但难就难在题目要求 <code>Note: Please solve it without division and in O(n).</code><br>好吧 于是我看到了别人的题解，先放上代码好了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> productExceptSelf = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = nums.length;</span><br><span class="line">    <span class="keyword">if</span> (len &lt; <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">var</span> result = [];</span><br><span class="line">    <span class="comment">// 存储前面几位的数值</span></span><br><span class="line">    <span class="keyword">var</span> productSoFar = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        result[i] = productSoFar;</span><br><span class="line">        productSoFar = nums[i] * productSoFar;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// console.log('result', result)</span></span><br><span class="line">    productSoFar = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = len - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">        result[j] *= productSoFar;</span><br><span class="line">        productSoFar *= nums[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这个算法用了一个很巧妙的步骤，主要分为两部分，<br>第一步 先用数组存储 自己前面项的乘积<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> productSoFar = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">      result[i] = productSoFar;</span><br><span class="line">      productSoFar = nums[i] * productSoFar;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 这一步result[i]存储的是从第一项一直到num[i - 1]的乘积</span></span><br></pre></td></tr></table></figure></p>
+<p>当存储完前面项的乘积后，重新将productSoFar这个中间变量设置为1 然后让他从后往前存储<br>由于在第一步里 result数组的最后一项 存储的一定是所给nums数组最后一项之前所有项的乘积，所以先从result后遍历，也就是这一步<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">productSoFar = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = len - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">    result[j] *= productSoFar;</span><br><span class="line">    productSoFar *= nums[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后就是让之前存储前项乘积的结果 乘上 nums[i]后面的项，这个算法的时间复杂度 是两个O(n)遍历的相加 因此也在范围内</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/02/leetcode-productExceptSelf题解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前端监控断网变化的tips" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -690,6 +767,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小技巧</a>

@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://lxy2222.github.io">
-  <title>前端监控断网变化的tips | 渣渣前端总结</title>
+  <title>leetcode productExceptSelf题解 | 渣渣前端总结</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前几天组里有同事遇到需要监测断网重连的问题，这类问题我们之前使用的是12345678// 连接网络window.addEventListener(&apos;online&apos;, () =&amp;gt; &amp;#123;  // TODO&amp;#125;)// 断网状态window.addEventL">
-<meta name="keywords" content="小技巧">
+  <meta name="description" content="今天本来想刷一题leetcode用来给愉快的周末总结一下，所以我就随机愉快的挑了一题，但是没有想到 这道题对我这只弱鸡很久都没解出来 还是看了别人的算法之后，思考了很久，话不多说先放题目Given an array nums of n integers where n &amp;gt; 1,  return an ar">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端监控断网变化的tips">
-<meta property="og:url" content="http://lxy2222.github.io/2018/11/24/前端监控断网变化的tips/index.html">
+<meta property="og:title" content="leetcode productExceptSelf题解">
+<meta property="og:url" content="http://lxy2222.github.io/2018/12/02/leetcode-productExceptSelf题解/index.html">
 <meta property="og:site_name" content="渣渣前端总结">
-<meta property="og:description" content="前几天组里有同事遇到需要监测断网重连的问题，这类问题我们之前使用的是12345678// 连接网络window.addEventListener(&apos;online&apos;, () =&amp;gt; &amp;#123;  // TODO&amp;#125;)// 断网状态window.addEventListener(&apos;offline&apos;, () =&amp;gt; &amp;#123;  // TODO&amp;#125;) 但是这种方法只能够在浏">
+<meta property="og:description" content="今天本来想刷一题leetcode用来给愉快的周末总结一下，所以我就随机愉快的挑了一题，但是没有想到 这道题对我这只弱鸡很久都没解出来 还是看了别人的算法之后，思考了很久，话不多说先放题目Given an array nums of n integers where n &amp;gt; 1,  return an array output such that output[i] is equal to t">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-24T13:07:18.044Z">
+<meta property="og:updated_time" content="2018-12-02T13:55:30.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端监控断网变化的tips">
-<meta name="twitter:description" content="前几天组里有同事遇到需要监测断网重连的问题，这类问题我们之前使用的是12345678// 连接网络window.addEventListener(&apos;online&apos;, () =&amp;gt; &amp;#123;  // TODO&amp;#125;)// 断网状态window.addEventListener(&apos;offline&apos;, () =&amp;gt; &amp;#123;  // TODO&amp;#125;) 但是这种方法只能够在浏">
+<meta name="twitter:title" content="leetcode productExceptSelf题解">
+<meta name="twitter:description" content="今天本来想刷一题leetcode用来给愉快的周末总结一下，所以我就随机愉快的挑了一题，但是没有想到 这道题对我这只弱鸡很久都没解出来 还是看了别人的算法之后，思考了很久，话不多说先放题目Given an array nums of n integers where n &amp;gt; 1,  return an array output such that output[i] is equal to t">
   
     <link rel="alternative" href="/atom.xml" title="渣渣前端总结" type="application/atom+xml">
   
@@ -163,28 +163,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-前端监控断网变化的tips" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-leetcode-productExceptSelf题解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      前端监控断网变化的tips
+      leetcode productExceptSelf题解
     </h1>
   
 
         
-        <a href="/2018/11/24/前端监控断网变化的tips/" class="archive-article-date">
-  	<time datetime="2018-11-24T11:43:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-24</time>
+        <a href="/2018/12/02/leetcode-productExceptSelf题解/" class="archive-article-date">
+  	<time datetime="2018-12-02T13:29:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前几天组里有同事遇到需要监测断网重连的问题，这类问题我们之前使用的是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连接网络</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'online'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 断网状态</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'offline'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// TODO</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>但是这种方法只能够在浏览器从断网切换到联网，或者从联网切换到断网的状态触发，或者换一句话说，如果你的浏览器始终保持在联网状态下，那么不会触发online事件，但是实际的需求里，需要联网和断网状态展示不同的样式，那么怎么办呢<br>后来在组长的帮助下，使用<code>navigator.onLine</code><br>就能实现相应的功能<br>不需要被动触发，参考文档如下所示<br>参考链接: <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NavigatorOnLine/Online_and_offline_events" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/NavigatorOnLine/Online_and_offline_events</a></p>
+        <p>今天本来想刷一题leetcode用来给愉快的周末总结一下，所以我就随机愉快的挑了一题，<br>但是没有想到 这道题对我这只弱鸡很久都没解出来 还是看了别人的算法之后，思考了很久，话不多说<br>先放题目<br><code>Given an array nums of n integers where n &gt; 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].</code><br>其实这道题目很简单 如果使用遍历的方法，但难就难在题目要求 <code>Note: Please solve it without division and in O(n).</code><br>好吧 于是我看到了别人的题解，先放上代码好了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; nums</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> productExceptSelf = <span class="function"><span class="keyword">function</span> (<span class="params">nums</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = nums.length;</span><br><span class="line">    <span class="keyword">if</span> (len &lt; <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">var</span> result = [];</span><br><span class="line">    <span class="comment">// 存储前面几位的数值</span></span><br><span class="line">    <span class="keyword">var</span> productSoFar = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        result[i] = productSoFar;</span><br><span class="line">        productSoFar = nums[i] * productSoFar;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// console.log('result', result)</span></span><br><span class="line">    productSoFar = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = len - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">        result[j] *= productSoFar;</span><br><span class="line">        productSoFar *= nums[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这个算法用了一个很巧妙的步骤，主要分为两部分，<br>第一步 先用数组存储 自己前面项的乘积<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">var</span> productSoFar = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">      result[i] = productSoFar;</span><br><span class="line">      productSoFar = nums[i] * productSoFar;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 这一步result[i]存储的是从第一项一直到num[i - 1]的乘积</span></span><br></pre></td></tr></table></figure></p>
+<p>当存储完前面项的乘积后，重新将productSoFar这个中间变量设置为1 然后让他从后往前存储<br>由于在第一步里 result数组的最后一项 存储的一定是所给nums数组最后一项之前所有项的乘积，所以先从result后遍历，也就是这一步<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">productSoFar = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = len - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">    result[j] *= productSoFar;</span><br><span class="line">    productSoFar *= nums[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后就是让之前存储前项乘积的结果 乘上 nums[i]后面的项，这个算法的时间复杂度 是两个O(n)遍历的相加 因此也在范围内</p>
 
       
 
@@ -198,7 +200,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小技巧</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -254,7 +256,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://lxy2222.github.io/2018/11/24/前端监控断网变化的tips/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://lxy2222.github.io/2018/12/02/leetcode-productExceptSelf题解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -268,18 +270,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/02/leetcode-productExceptSelf题解/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          leetcode productExceptSelf题解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/04/工作半年总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">工作半年总结</div>
+    <a href="/2018/11/24/前端监控断网变化的tips/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端监控断网变化的tips</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -362,8 +355,8 @@
         showTags: false
     }
     var disqus_config = function() {
-        this.page.url = 'http://lxy2222.github.io/2018/11/24/前端监控断网变化的tips/'; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = '/2018/11/24/前端监控断网变化的tips/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://lxy2222.github.io/2018/12/02/leetcode-productExceptSelf题解/'; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '/2018/12/02/leetcode-productExceptSelf题解/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE
         var d = document,
