@@ -160,6 +160,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-判断graph是否存在环" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/24/判断graph是否存在环/">判断graph是否存在环</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/24/判断graph是否存在环/" class="archive-article-date">
+  	<time datetime="2019-02-24T14:41:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天做了一道题目 来源于leetcode上的<a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener">Course Schedule</a><br>这道题是典型的求图中有没有环的问题，这一题我使用的是dfs遍历，在算法引论这本书中，鉴别图中有没有环的办法是判断是否有一条后退边，即从后代链接到子孙的边 那么具体到算法的实现如下<br>首先根据所给的数组 来构造graph 这里我们使用Map来标记graph<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prerequisites = [[<span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">1</span>]]</span><br><span class="line"><span class="keyword">var</span> graph = <span class="keyword">new</span> <span class="built_in">Map</span> ()</span><br><span class="line"><span class="comment">/** 构建图的js实现 **/</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [v, e] <span class="keyword">of</span> prerequisites) &#123;</span><br><span class="line">    <span class="keyword">if</span> (graph.has(v)) &#123; <span class="comment">// 如果已经有到v这个定点的边，那么就把新发现的边push到边的数组里</span></span><br><span class="line">        <span class="keyword">let</span> edges = graph.get(v)</span><br><span class="line">        edges.push(e)</span><br><span class="line">        graph.set(v, edges)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 第一次发现顶点的时候 就把边push进数组</span></span><br><span class="line">        graph.set(v, [e])</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>那么这样我们便完成了图的构建，利用Map 形成了一个键值对，key是v顶点，graph[v]便是键值对 那么接下来就是主动找到环的问题了，首先 我们用一个Set标注已经访问过的边，因为Set中不会有重复的键值<br>那么接下来的原理也就很简单了，比如我们访问0这个顶点的时候 dfs 这个顶点的边 如果这个顶点有到0的边 那么就可以认为存在一个环<br>那么重点也就来了 我们需要两个Set<br>一个是标注<strong>是否已经访问了这个顶点的visited</strong><br>另一个是<strong>标注在访问当前访问的顶点visiting</strong><br>为什么要标注这样两个Set呢</p>
+<blockquote>
+<p>例如 {0: [1,2,3,4] 1: [4]} 0有到4的边，1也有到4的边，但是在dfs 0的时候 就会把4标注为 visited 实际上这里并没有环，那么就用visiting 来标注 算法如下所示<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> find_circle = <span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> edges = graph.get(v)</span><br><span class="line">    visiting.add(v)</span><br><span class="line">    <span class="keyword">if</span> (edges &amp;&amp; edges.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> e <span class="keyword">of</span> edges) &#123;</span><br><span class="line">            <span class="keyword">if</span> (visited.has(e)) &#123;</span><br><span class="line">              <span class="comment">// 如果已经访问了这个节点 那么就跳出这个循环</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (visiting.has(e)) &#123;</span><br><span class="line">              <span class="comment">// 如果同时也访问了e 表示在遍历v的边时 有一条指向v的后退边</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (find_circle(e)) &#123;</span><br><span class="line">              <span class="comment">// dfs e的顶点时 发现有指向e的后退边</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// visiting.delete(v)</span></span><br><span class="line">    visited.add(v) <span class="comment">// 标注已经访问过这个节点</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>然后就是对每个顶点进行遍历<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [v, e] <span class="keyword">of</span> graph) &#123;</span><br><span class="line">  <span class="keyword">if</span> (find_circle(v)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/24/判断graph是否存在环/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-leetcode-productExceptSelf题解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -676,7 +755,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 lxy2222
+    		&copy; 2019 lxy2222
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
