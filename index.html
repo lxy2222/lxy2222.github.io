@@ -160,6 +160,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript-map-parseInt-的一道问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/25/javascript-map-parseInt-的一道问题/">javascript map(parseInt)的一道问题</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/25/javascript-map-parseInt-的一道问题/" class="archive-article-date">
+  	<time datetime="2019-02-25T15:39:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近由于找工作的比较多 经常会遇到有同事来问前端题目的情况，其中有一道题目特别有名 那么就是经典的 <code>[1,2,3].map(parseInt)</code>的结果是什么，答案是<code>[1, NaN, NaN]</code>那么为什么是这个结果呢<br>首先这里涉及到了两个知识点，一个是<code>Array.prototype.map</code> 另一个是parseInt的参数，按照MDN上<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">map的说明</a> 第一个参数是currentValue, 第二个参数是index， 第三个参数是array也就是map方法被调用的数组，也就是<code>[1,2,3]</code>,那么这个数组的调用也就如下所示<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">'1'</span>, <span class="number">0</span>)</span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'2'</span>, <span class="number">1</span>)</span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'3'</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
+<p>到这一步的时候 这道题目就已经解决了一大半，接下来是看parseInt的定义 parseInt的两个参数分别是string, 和radix用来表示进制，但是对于进制的表示情况有如下说明</p>
+<blockquote>
+<p>在基数为 undefined，或者基数为 0 或者没有指定的情况下，JavaScript 作如下处理：<br>如果字符串 string 以”0x”或者”0X”开头, 则基数是16 (16进制).<br>如果字符串 string 以”0”开头, 基数是8（八进制）或者10（十进制），那么具体是哪个基数由实现环境决定。ECMAScript 5 规定使用10，但是并不是所有的浏览器都遵循这个规定。因此，永远都要明确给出radix参数的值。<br>如果字符串 string 以其它任何值开头，则基数是10 (十进制)。<br>如果第一个字符不能被转换成数字，parseInt返回NaN。</p>
+</blockquote>
+<p>所以这样的话 那么就返回了[1, NaN, NaN]</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/25/javascript-map-parseInt-的一道问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-判断graph是否存在环" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -846,6 +925,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
