@@ -1,0 +1,55 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: unset;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  text-decoration: underline
+}
+.container {
+  width: 80%;
+  height: 100%;
+  font-size: 1rem;
+  color: #999;
+  margin: 0 auto;
+}
+.big-group li{
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  display: flex;
+  box-sizing: border-box;
+  padding: .5rem;
+}
+.big-group h3,
+.books h3 {
+  font-size: 2rem;
+  color: #2e484c;
+}
+.big-group .line-vertical {
+  width: 5px;
+  height: 2rem;
+  display:inline-block;
+  background-color: rgba(138,188,159,0.5);
+  vertical-align: middle;
+  margin-right: 1.5rem;
+  margin-top: 13px;
+}
+.big-group .blog {
+  display: inline-block;
+  text-align: center;
+}
+.books ul{
+  font-size: 1rem;
+  display: flex;
+}
+.books li {
+  margin-right: 1rem;
+}
