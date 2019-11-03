@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>测试页面排版</title>
+  <link rel="stylesheet" type="text/css" href="./layout.css">
+  <script>
+    // 移动端分辨率调整
+    let ohtml = document.getElementsByTagName('html')[0]
+    let width = ohtml.clientWidth
+    if (width <= 600) {
+      let device = window.devicePixelRatio
+      device = device >= 3 ? 3 : device
+      let ratio = 1 / device
+      ohtml.style.fontSize = 100 * (width / 375) * ratio + 'px'
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <!-- 左边序号栏 -->
+    <div class="left-nav">
+      <!-- 大标题 -->
+      <h2 class="common-title">2</h2>
+      <!-- 小标题 -->
+      <p class="small-title">2.1</p>
+    </div>
+    <!-- 正文栏 -->
+    <div class="content">
+      <!-- 大标题文字部分 -->
+      <p class="common-title">Data Abstraction</p>
+      <!-- 小标题文字部分 -->
+      <p class="small-title">specifying data </p>
+      <!-- 正文内容 每一个段落用一个p标签代替 -->
+      <p>The town has nothing to sell except the finest wrought iron in the world. As the quality of this iron is historic and the form of it a standard muck bar for use in further manufacture you order it from afar at a price based on what is current in Pittsburgh.</p>
+      <p>Sellers of merchandise miss New Damascus on purpose. It is a catalogue town. It buys nothing because it is new, nothing it does not need, has no natural pride in waste whatever.</p>
+    </div>
+  </div>
+</body>
+</html>

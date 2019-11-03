@@ -1,0 +1,85 @@
+html, body {
+  margin: 0;
+  padding: unset;
+}
+.container {
+  display: flex;
+}
+/* p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+} */
+.left-nav {
+  width: 20%;
+  position: relative;
+}
+.content {
+  position: relative;
+}
+.left-nav .common-title {
+  position: absolute;
+  font-size: 40px;
+  right: 20px;
+  top: 150px;
+  font-weight: 700;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.left-nav .small-title {
+  font-size: 28px;
+  font-weight: 700;
+  position: absolute;
+  top: 250px;
+  right: 20px;
+}
+.content .common-title {
+  margin-top: 150px;
+  font-weight: 700;
+  font-size: 38px;
+}
+.content .small-title {
+  margin-top: 80px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 28px;
+}
+/* 移动端 原谅我懒 */
+@media screen and (max-device-width: 600px) {
+  .left-nav {
+    width: 40%;
+    position: relative;
+  }
+  p {
+    font-size: .2rem;
+  }
+  .content {
+    position: relative;
+  }
+  .left-nav .common-title {
+    position: absolute;
+    font-size: .4rem;
+    right: .2rem !important;
+    top: 1.5rem;
+    font-weight: 700;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+  .left-nav .small-title {
+    font-size: .28rem;
+    font-weight: 700;
+    position: absolute;
+    top: 2.5rem;
+    right: .2rem;
+  }
+  .content .common-title {
+    margin-top: 1.5rem;
+    font-weight: 700;
+    font-size: .38rem;
+  }
+  .content .small-title {
+    margin-top: .8rem;
+    font-weight: 700;
+    font-size: .28rem;
+    line-height: .28rem;
+  }
+}
